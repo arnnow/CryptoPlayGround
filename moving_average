@@ -1,0 +1,24 @@
+ask_price : Achat de devise
+
+## Near reality
+SELECT moving_average(min(ask_price),10) FROM XXBTZEUR WHERE time > now() - 24h GROUP BY time(1m)
+
+## Far reality
+SELECT moving_average(min(ask_price),10) FROM XXBTZEUR WHERE time > now() - 24h GROUP BY time(9m)
+
+buy when Near reality become > Far reality
+
+
+{"time"=>"2017-11-29T23:42:00Z", "moving_average"=>8449}, {"time"=>"2017-11-29T23:51:00Z", "moving_average"=>8433.03}
+
+
+bid_price : Vente de devise
+
+## Near Reality
+SELECT moving_average(min(bid_price),10) FROM "autogen"./^$Currency$/ WHERE time > now() - 24h GROUP BY time(1m)
+
+## Far reality
+SELECT moving_average(min(bid_price),10) FROM "autogen"./^$Currency$/ WHERE time > now() - 24h GROUP BY time(9m)
+
+
+sell when NearReality < Far reality

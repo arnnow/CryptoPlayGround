@@ -1,0 +1,29 @@
+---
+redis:
+  server: '127.0.0.1'
+  port: '6379'
+influxdb:
+  host: "127.0.0.1"
+  database: 'trading'
+  password: ''
+# Kraken
+kraken:
+  api_key: 'abcd'
+  api_secret: 'abcd'
+  base_uri: 'https://api.kraken.com'
+  api_version: 0
+  limiter: true
+  tier: 0
+  poller:
+    currency: ['XXBTZEUR','XETCZEUR','XLTCZEUR','XREPZEUR','XXMRZEUR','XXRPZEUR','XZECZEUR','XETHZEUR']
+    sleeptime: 20         # this is the sleep time between ticker update
+    crashsleep: 10
+  worker:
+    maxamount: 20           # this is the ammount in € for trading
+    sleeptime: 120
+    crashsleep: 10
+  xxbtzeur: 
+    currency: 'XXBTZEUR'
+    maxamount: 20           # this is the ammount in € for trading
+    sleeptime: 2
+    crashsleep: 10
